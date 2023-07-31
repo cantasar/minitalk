@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 11:44:59 by ctasar            #+#    #+#             */
-/*   Updated: 2023/07/31 20:41:00 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/07/31 22:05:16 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_putstr_fd(const char *s)
 	}
 }
 
-int	ft_atoi(char *s)
+int	ft_atoi(const char *s)
 {
 	int neg;
 	int total;
@@ -67,7 +67,7 @@ void	send_bit(int pid, char c)
 			printf("%d) bit = %d, argv[2][i] = %c  -> 0\n", i, c>>bit , c);
 			kill(pid, SIGUSR2);
 		}
-		usleep(500);
+		//usleep(50);
 		bit++;
 		i++;
 	}

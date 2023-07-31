@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:16:24 by ctasar            #+#    #+#             */
-/*   Updated: 2023/07/31 18:54:49 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/07/31 21:56:56 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,10 @@ int main(void)
 	
     printf("PID = %d\n", getpid());
 
+	signal(SIGUSR1, signal_handler);
+	signal(SIGUSR2, signal_handler);
     while (1)
     {
-		signal(SIGUSR1, signal_handler);
-		signal(SIGUSR2, signal_handler);
-
         pause();
     }
     return 0;
