@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:16:24 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/01 13:23:35 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/01 14:29:56 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void signal_handler(int signal)
 	static unsigned char	i = 0;
 
 	if (signal == SIGUSR1)
-		i |= (0x1 << bit);
+		i += (1 << bit);
 	bit++;
 	if (bit == 32)
 	{

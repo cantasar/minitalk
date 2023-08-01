@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 11:44:59 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/01 13:23:38 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/01 14:25:03 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,14 @@ int main(int argc, char const *argv[])
 {
     int pid;
 	int i;
-	
+
 	if (argc == 3)
 	{
+		if (argc == 3 && ft_atoi(argv[1]) <= 0)
+		{
+			ft_putstr_fd("pid cannot be less or equal 0 !!!\n");
+			return (0);
+		}
 		pid = ft_atoi(argv[1]);
 		i = 0;
 		while (argv[2][i])
