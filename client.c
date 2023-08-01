@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 11:44:59 by ctasar            #+#    #+#             */
-/*   Updated: 2023/07/31 22:05:16 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/01 13:23:38 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,19 @@ void	send_bit(int pid, char c)
     int bit = 0;
 	int i = 0;
 
-	while (bit < 8)
+	while (bit < 32)
 	{
 		if ((c >> bit) & 1)
 		{
-			printf("%d) bit = %d, argv[2][i] = %c  -> 1\n", i, c>>bit , c);
+			printf("%d) bit = %d, char = %c  -> 1\n", i, c>>bit , c);
 			kill(pid, SIGUSR1);
 		}
 		else
 		{
-			printf("%d) bit = %d, argv[2][i] = %c  -> 0\n", i, c>>bit , c);
+			printf("%d) bit = %d, char = %c  -> 0\n", i, c>>bit , c);
 			kill(pid, SIGUSR2);
 		}
-		//usleep(50);
+		usleep(50);
 		bit++;
 		i++;
 	}
@@ -77,6 +77,7 @@ int main(int argc, char const *argv[])
 {
     int pid;
 	int i;
+	
 	if (argc == 3)
 	{
 		pid = ft_atoi(argv[1]);
@@ -86,6 +87,6 @@ int main(int argc, char const *argv[])
 		return 0;
 	}
 	else
-		ft_putstr_fd("Invalid entry\n");
+		ft_putstr_fd("invalid number of arguments\nUse: ./client <pid> <text>\n");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:16:24 by ctasar            #+#    #+#             */
-/*   Updated: 2023/07/31 21:56:56 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/01 13:23:35 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,6 @@ void	ft_putstr_fd(const char *s)
 	}
 }
 
-int	ft_atoi(char *s)
-{
-	int neg;
-	int total;
-
-	neg = 1;
-	total = 0;
-	while (*s == ' ' || (*s >= 9 && *s <= 13))
-		s++;
-	while (*s == '-' || *s == '+')
-	{
-		if(*s == '-')
-			neg = -1;
-		s++;
-	}
-	while (*s >= '0' && *s <= '9')
-	{
-		total = total * 10 + (*s - '0');
-		s++;
-	}
-	return (total * neg);
-}
-
 void signal_handler(int signal)
 {
 	static char				bit = 0;
@@ -58,7 +35,7 @@ void signal_handler(int signal)
 	if (signal == SIGUSR1)
 		i |= (0x1 << bit);
 	bit++;
-	if (bit == 8)
+	if (bit == 32)
 	{
 		write(1, &i, 1);
 		i = 0;
@@ -68,13 +45,12 @@ void signal_handler(int signal)
 
 int main(void)
 {
-	
     printf("PID = %d\n", getpid());
 
-	signal(SIGUSR1, signal_handler);
-	signal(SIGUSR2, signal_handler);
     while (1)
     {
+	signal(SIGUSR1, signal_handler);
+	signal(SIGUSR2, signal_handler);
         pause();
     }
     return 0;
