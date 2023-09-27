@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 11:44:59 by ctasar            #+#    #+#             */
-/*   Updated: 2023/09/27 19:27:50 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/09/27 19:28:08 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	send_bit(int pid, char c)
 
 	bit = 0;
 	i = 0;
-	while (bit < 8)
+	while (bit < 32)
 	{
 		if ((c >> bit) & 1)
 		{
@@ -70,7 +70,7 @@ void	send_bit(int pid, char c)
 	}
 }
 
-int	main(int argc, const char **argv)
+int	main(int argc, char const *argv[])
 {
 	int	pid;
 	int	i;
